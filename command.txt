@@ -1,1 +1,33 @@
 
+pip install matplotlib requests pandas wordcloud tqdm
+
+pip install dagster dagi
+
+dagit -f example/hn_dagster.py
+
+
+dagster dev -f my_file.py
+
+
+
+dagster dev -f example/hn_dagster.py
+
+
+
+dagster-webserver
+
+dagster dev
+
+
+python -m dagster dev
+
+
+
+python -m venv .pyenv
+source .pyenv/Scripts/activate
+pip install dagster dagster-webserver
+pip install cygrpc pydantic
+pip install -r requirements.txt
+
+
+dagster dev
