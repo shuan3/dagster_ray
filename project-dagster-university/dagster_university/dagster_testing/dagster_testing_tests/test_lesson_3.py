@@ -69,6 +69,12 @@ def test_func_wrong_type():
 def test_wrong_type_annotation_error():
     pass
 
+# This test is not needed as the function is already tested in test_func_wrong_type Error handling
+def test_wrong_type_annotation()->str:
+    return "2"
+
+def test_func_wrong_type_annotation():
+    assert lesson_3.func_wrong_type_annotation() == "2"
 
 def test_assets():
     pass
