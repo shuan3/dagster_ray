@@ -36,3 +36,5 @@ dagster dev
 ```
 
 Open http://localhost:3000 with your browser to see the project.
+ docker compose up -d
+ docker-compose down --volumes --remove-orphans

@@ -20,4 +20,13 @@ pip install -e ".[dev]"
 
 pytest 'd:/Github/dagster_ray/project-dagster-university/dagster_university/dagster_testing/dagster_testing_tests/test_lesson_3.py'
 # Check priint out in the class
- pytest -rP 'd:/Github/dagster_ray/project-dagster-university/dagster_university/dagster_testing/dagster_testing_tests/test_lesson_3.py'
+pytest -rP 'd:/Github/dagster_ray/project-dagster-university/dagster_university/dagster_testing/dagster_testing_tests/test_lesson_3.py'
+
+
+# update gitignore
+ git rm -r --cached .
+
+
+
+docker compose up -d
+docker-compose down --volumes --remove-orphans

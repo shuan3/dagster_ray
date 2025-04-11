@@ -27,7 +27,10 @@ def file_output():
 
 # Asset Checks
 def test_non_negative():
-    pass
+    asset_check_pass = lesson_6.non_negative(10)
+    assert asset_check_pass.passed
+    asset_check_fail = lesson_6.non_negative(-10)
+    assert not asset_check_fail.passed
 
 
 # Jobs
@@ -38,9 +41,6 @@ def test_jobs():
 def test_job_selection():
     pass
 
-
-def test_job_config():
-    pass
 
 
 # Schedules
@@ -62,9 +62,26 @@ def test_sensor_run():
 
 
 # Definitions
+# Test the definitions of assets, jobs, schedules, and sensors
 def test_def():
-    assert defs
+    assert defs.get_assets_def("total_population")
+    assert defs.get_job_def("jobs_config")
+    assert defs.get_schedule_def("my_schedule")
+    assert defs.get_sensor_def("my_sensor")
 
 
 def test_def_objects():
     pass
+
+def test_job_config():
+    assert (
+        jobs.my_job_configured.config["ops"]["population_file_config"]["config"]["path"]
+        == "dagster_testing_tests/data/test.csv"
+    )
+
+
+# Schedules
+def test_schedule():
+    assert schedules.my_schedule
+    assert schedules.my_schedule.cron_schedule == "0 0 5 * *"
+    assert schedules.my_schedule.job == jobs.my_job
