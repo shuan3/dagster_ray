@@ -47,3 +47,23 @@ dagster dev
 
  git config http.postBuffer 524288000
  git checkout --orphan test_asset_1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ python -m venv .venv
+ source .venv/Scripts/activate
+ uv init
+ uv add dagster dagster-webserver pandas
+ pip install -e .
+ uv run dagster dev
