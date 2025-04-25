@@ -58,7 +58,7 @@ dagster dev
 
 
 
-
+git rm -r --cached .
 
 
  python -m venv .venv

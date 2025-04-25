@@ -1,0 +1,9 @@
+aws:
+  access_key_id: "YOUR_ACCESS_KEY_ID"
+  secret_access_key: "YOUR_SECRET_ACCESS_KEY"
+
+etl_jobs:
+  - bucket: "example-bucket"
+    source: "source-object"
+    target: "target-object"
+    sql: "SELECT * FROM table"

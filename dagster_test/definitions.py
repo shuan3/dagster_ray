@@ -1,3 +1,4 @@
+import os
 from dagster import Definitions, load_assets_from_package_module
 from dagster_test import assets
 from dagster_test.utils.s3 import s3
@@ -21,7 +22,7 @@ def build_etl_job(
         print(f"SQL: {sql}")
     return dg.Definitions(assets=[etl_asset])
 
-# Function to load ETL jobs from YAML
+# Function to load ETL jobs from a single YAML file
 def load_etl_jobs_from_yaml(yaml_path: str) -> dg.Definitions:
     config = yaml.safe_load(open(yaml_path))
     s3_resource = s3().S3Resource(
@@ -41,8 +42,17 @@ def load_etl_jobs_from_yaml(yaml_path: str) -> dg.Definitions:
         )
     return dg.Definitions.merge(*defs)
 
+# Function to load ETL jobs from all YAML files in a folder
+def load_etl_jobs_from_folder(folder_path: str) -> dg.Definitions:
+    defs = []
+    for file_name in os.listdir(folder_path):
+        if file_name.endswith(".yaml"):
+            yaml_path = os.path.join(folder_path, file_name)
+            defs.append(load_etl_jobs_from_yaml(yaml_path))
+    return dg.Definitions.merge(*defs)
+
 # Combine all Definitions into a single object
 defs = Definitions.merge(
     Definitions(assets=load_assets_from_package_module(assets, group_name="assets")),
-    load_etl_jobs_from_yaml("dagster_test/yaml_asset/test1.yaml"),
+    load_etl_jobs_from_folder("dagster_test/yaml_asset"),
 )
