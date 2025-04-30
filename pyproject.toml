@@ -9,6 +9,7 @@ dependencies = [
     "dagster-webserver>=1.10.10",
     "duckdb>=1.2.2",
     "pandas>=2.2.3",
+    "pre-commit>=4.2.0",
     "pydantic>=2.11.3",
     "pyyaml>=6.0.2",
 ]

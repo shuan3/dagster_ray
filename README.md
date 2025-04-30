@@ -67,3 +67,6 @@ git rm -r --cached .
  uv add dagster dagster-webserver pandas
  pip install -e .
  uv run dagster dev
+
+
+ pre-commit run --all-files

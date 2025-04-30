@@ -12,6 +12,7 @@ def import_from_string(import_path: str):
     module = importlib.import_module(module_name)
     return getattr(module, class_name)
 
+
 # Function to build ETL job
 # Function to build ETL job
 def build_etl_job(
@@ -28,7 +29,9 @@ def build_etl_job(
         print(f"Source Object: {source_object}")
         print(f"Target Object: {target_object}")
         print(f"SQL: {sql}")
+
     return dg.Definitions(assets=[etl_asset])
+
 
 # def build_etl_job(
 #     s3_resource: str,
@@ -75,6 +78,7 @@ def load_etl_jobs_from_yaml(yaml_path: str) -> dg.Definitions:
         )
     return dg.Definitions.merge(*defs)
 
+
 # Function to load ETL jobs from all YAML files in a folder
 def load_etl_jobs_from_folder(folder_path: str) -> dg.Definitions:
     defs = []
@@ -87,8 +91,10 @@ def load_etl_jobs_from_folder(folder_path: str) -> dg.Definitions:
 
 # Combine all Definitions into a single object
 defs = Definitions.merge(
-    Definitions(assets=load_assets_from_package_module(assets, group_name="assets"), resources={"my_resource": fs_io_manager}),
+    Definitions(
+        assets=load_assets_from_package_module(assets, group_name="assets"),
+        resources={"my_resource": fs_io_manager},
+    ),
     load_etl_jobs_from_folder("dagster_test/yaml_asset"),
     # Definitions( assets=dg.load_assets_from_package_module(assets), resources={"my_resource": MyResource(foo="bar")}, )
-
 )

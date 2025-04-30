@@ -3,7 +3,8 @@ class s3:
     #     self.bucket = bucket
     #     self.prefix = prefix
 
-    def S3Resource(self,
+    def S3Resource(
+        self,
         aws_access_key_id: str,
         aws_secret_access_key: str,
         region_name: str = "us-east-1",

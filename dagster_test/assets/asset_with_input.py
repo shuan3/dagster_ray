@@ -9,9 +9,10 @@ from dagster import Definitions
 from dagster import ScheduleDefinition
 
 
-@asset(key="my_awesome_first_asset", 
+@asset(
+    key="my_awesome_first_asset",
     #    group_name="get_started"
-       )
+)
 def my_first_asset(context: AssetExecutionContext):
     """
     This is our first asset for testing purposes
